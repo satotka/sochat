@@ -1,5 +1,4 @@
 var s = io.connect();
-//var s = io.connect('http://localhost:3000');
 
 s.on("connect", function () {});
 s.on("disconnect", function (client) {});
