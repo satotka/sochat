@@ -1,7 +1,32 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		title= title
+		link(rel="stylesheet", href="/stylesheets/style.css")
+		link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css")
+		link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css")
+		script(src="https://code.jquery.com/jquery-1.10.2.min.js")
+		script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
+		block head
+	body
+		nav(class="navbar navbar-default", role="navigation")
+			div(class="navbar-header")
+				button(type="button", class="navbar-toggle", data-toggle="collapse", data-target=".navbar-collapse")
+					span(class="sr-only") Toggle navigation
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="navbar-brand",href="/") Express
+			div(class="collapse navbar-collapse")
+				ul(class="nav navbar-nav")
+					li
+						a(href="Chat") Simple Chat
+					li
+						a(href="#",class="dropdown-toggle",data-toggle="dropdown") menu2
+							b(class="caret") 
+						ul(class="dropdown-menu")
+							li
+								a Action(menu sample)
+		block breadcrumb
+		div(class="container")
+			block content

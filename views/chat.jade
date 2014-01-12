@@ -1,0 +1,19 @@
+extends layout
+
+block head
+	script(src="/socket.io/socket.io.js")
+	script(src="/javascripts/chat.js")
+
+block breadcrumb
+	ol(class="breadcrumb")
+		li
+			a(href="/") Home
+		li(class="active") Chat
+
+block content
+	p Welcome to #{title}
+	div(id="msg_list",style="height:200px; overflow:auto;")
+	form(action="",method="post",onsubmit="return false;")
+		input(type="text",class="text",style="width:95%; padding:10px",id="message")
+		input(type="submit",class="button",style="padding:10px",onclick="sendMessage();",value="みんなに送信")
+		input(type="submit",class="button",style="padding:10px",onclick="sendBroadcast();",value="自分以外に送信")
