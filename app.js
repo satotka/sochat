@@ -42,9 +42,6 @@ io.sockets.on("connection", function(socket){
 	socket.on("C_to_S_message", function(data){
 		io.sockets.emit("S_to_C_message", {value:data.value});
 	});
-	socket.on("C_to_S_broadcast", function(data){
-		socket.broadcast.emit("S_to_C_message", {value:data.value});
-	});
 	socket.on("disconnect", function(){
 	});
 });
