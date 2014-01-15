@@ -21,6 +21,9 @@ function addMessage (data) {
 	$('<div class="list-group">').prependTo('#msg_list')
 		.append('<h3 class="list-group-item-heading">'+ msg +'</h3>')
 		.append('<p class="list-group-item-text">'+ data.svTime +':' +data.port +'</p>')
+		.append('<p class="list-group-item-text">transport:'+ s.socket.transport.name +'</p>')
+		.append('<p class="list-group-item-text">sessid:'+s.socket.transport.sessid +'</p>')
+		
 }    
 function con() {
 	var msg = 'Connect.';
