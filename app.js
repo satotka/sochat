@@ -40,7 +40,7 @@ var srv = http.createServer(app).listen(app.get('port'), function(){
 var io = socketio.listen(srv);
 io.sockets.on("connection", function(socket){
 	socket.on("C_to_S_message", function(data){
-		io.sockets.emit("S_to_C_message", {value:data.value});
+		io.sockets.emit("S_to_C_message", {value:data.value, svTime:new Date, port:app.get('port')});
 	});
 	socket.on("disconnect", function(){
 	});
