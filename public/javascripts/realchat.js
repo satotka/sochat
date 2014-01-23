@@ -15,6 +15,18 @@ $(function () {
     sc.on("disconnect", function () {
         showStatus('Disconnect.');
     });
+    sc.on("connecting", function () {
+        showStatus('Connecting.');
+    });
+    sc.on("connect_failed", function () {
+        showStatus('Connect failed.');
+    });
+    sc.on("reconnecting", function () {
+        showStatus('Reconnecting.');
+    });
+    sc.on("reconnect", function () {
+        showStatus('Reconnected.');
+    });
 
     // received real
     sc.on("S_to_C_real", function (data) {
