@@ -32,16 +32,22 @@ app.get('/', function(req, res){
   res.render('index', { title: 'Express' });
 });
 app.get('/chat', chat.show);
+app.get('/realchat', chat.realshow);
 
 var srv = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
 var io = socketio.listen(srv);
-io.sockets.on("connection", function(socket){
-	socket.on("C_to_S_message", function(data){
-		io.sockets.emit("S_to_C_message", {value:data.value, svTime:new Date, port:app.get('port')});
-	});
-	socket.on("disconnect", function(){
-	});
+io.sockets.on("connection", function (socket) {
+  console.log("A socket connected. " + socket.id);
+  socket.on("C_to_S_message", function (data) {
+    io.sockets.emit("S_to_C_message", {value: data.value, svTime: new Date()});
+  });
+  socket.on("C_to_S_real", function(data) {
+    io.sockets.emit("S_to_C_real", {value: data.value, svTime: new Date(), sid: socket.id});
+  });
+  socket.on("disconnect", function () {
+    console.log("A socket disconnect. " + socket.id);
+  });
 });

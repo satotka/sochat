@@ -16,23 +16,23 @@ $(function () {
         showStatus('Disconnect.');
     });
 
-    // received message
-    sc.on("S_to_C_message", function (data) {
-        var msg = data.value.replace(/[!@$%<>'"&|]/g, '');
-        $('<div class="list-group">').prependTo('#msg_list')
-            .append('<h3 class="list-group-item-heading">' + msg + '</h3>')
-            .append('<p class="list-group-item-text">' + data.svTime + '</p>');
+    // received real
+    sc.on("S_to_C_real", function (data) {
+        var txt = data.value.replace(/[!@$%<>'"&|]/g, ''),
+            u = $('#' + data.sid);  // temp
+        if (u.length === 0) {
+            $('<div class="list-group">').prependTo('#realTextOut')
+                .attr("id", data.sid)
+                .append('<h4>' + data.sid + '</h4>')
+                .append('<p>' + '</p>');
+        }
+        u = $('#' + data.sid);
+        u.find('p').text(txt);
     });
 
-    // send message
-    function sendMessage() {
-        var msg = $("#message").val();
-        $("#message").val("");
-        sc.emit("C_to_S_message", {value: msg});
-    }
-
     //bind button event
-    $('#btnSendMsg').on("click", function () {
-        sendMessage();
+    $('#realText').keyup(function () {
+        var msg = $("#realText").val();
+        sc.emit("C_to_S_real", {value: msg});
     });
 });

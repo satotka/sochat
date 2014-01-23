@@ -12,9 +12,10 @@ block content
 		.col-sm-6
 			#msg_list
 		.col-sm-6
-			form(action="",role="form",method="post",onsubmit="return false;")
+			form(action="", role="form", method="post", onsubmit="return false;")
 				.form-group
 					label.sr-only Your message
-					input#message.text.form-control(type="text",placeholder="Your message")
+					input#message.text.form-control(type="text", placeholder="Your message")
 				.form-group
-					input.btn.btn-primary(type="submit", onclick="sendMessage();",value="Send all")
+					input#btnSendMsg.btn.btn-primary(type="submit", value="Send Message")
+			#status

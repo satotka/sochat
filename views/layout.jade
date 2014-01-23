@@ -5,6 +5,11 @@ html
 		link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css")
 		link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css")
 		link(rel="stylesheet", href="/stylesheets/style.css")
+		<!--[if lt IE 9]>
+		script(src="ThirdParty/html5shiv/html5shiv.js")
+		script(src="ThirdParty/Respond/respond.src.js")
+		<![endif]-->
+
 		script(src="https://code.jquery.com/jquery-1.10.2.min.js")
 		script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
 		block head
@@ -12,7 +17,9 @@ html
 		nav.navbar.navbar-default(role="navigation")
 			.navbar-header
 				a.navbar-brand(href="/") Express
+			.navbar-collapse
 				ul.nav.navbar-nav
 					li: a(href="Chat") Simple Chat
+					li: a(href="RealChat") Realtime Chat
 		.container
 			block content
