@@ -1,25 +1,27 @@
 $(function () {
     var sc = io.connect();
 
-    function showStatus(msg) {
-        $('<div class="list-group">').prependTo('#status')
-            .append('<h4 class="list-group-item-heading">' + msg + '</h4>')
-            .append('<p class="list-group-item-text">' + new Date() + '</p>')
-            .append('<p class="list-group-item-text">transport:' + sc.socket.transport.name + '</p>')
-            .append('<p class="list-group-item-text">sessid:' + sc.socket.transport.sessid + '</p>');
+    function showStatus(eventName, transport, datetime) {
+		var tp = transport || sc.socket.transport,
+			dt = datetime || new Date(),
+			msg = dt.toLocaleTimeString() +	' [ ' + tp.name + ' ] ' + tp.sessid;
+
+			$('<div class="list-group">').prependTo('#status')
+				.append('<h5 class="list-group-item-heading">' + eventName + '</h5>')
+				.append('<p class="list-group-item-text">' + msg + '</p>');
     }
 
-    sc.on("connect", function () {
-        showStatus('Connect.');
-    });
-    sc.on("disconnect", function () {
-        showStatus('Disconnect.');
-    });
     sc.on("connecting", function () {
         showStatus('Connecting.');
     });
+    sc.on("connect", function () {
+        showStatus('Connect.');
+    });
     sc.on("connect_failed", function () {
         showStatus('Connect failed.');
+    });
+    sc.on("disconnect", function () {
+        showStatus('Disconnect.');
     });
     sc.on("reconnecting", function () {
         showStatus('Reconnecting.');
