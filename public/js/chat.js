@@ -49,4 +49,6 @@ $(function () {
     $('#btnSendMsg').on("click", function () {
         sendMessage();
     });
+    
+    alertify.success("Welcome! chat.");
 });
