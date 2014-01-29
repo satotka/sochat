@@ -5,10 +5,10 @@ simple chat with **node.js** and **sokcet.io**
 
 Features
 --------
-- **Simple chat
-- **No auth
+- **Simple chat**
+- **No auth**
  - no indentify user
-- **No data store
+- **No data store**
  - no db
  - no web stroage
 
@@ -17,15 +17,20 @@ Getting Started
 The easiest way to get started is to clone the repository:
 
 ```bash
-# Fetch only the latest commits.
-git clone --depth=1 git@github.com:satotka/sochat.git my-project
+# Clone to loacl.
+git clone git@github.com:satotka/sochat.git my-project
 
 cd my-project
 
 # Install NPM dependencies
 npm install
 
+# start app
 node app.js
 ```
 
-open url http://localhost:3000
+Open your browser http://localhost:3000
+
+License
+-------
+The MIT License (MIT)
