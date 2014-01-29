@@ -1,33 +1,53 @@
 $(function () {
     var sc = io.connect();
 
-    function showStatus(eventName, transport, datetime) {
+    function getStatusMessage(transport, datetime) {
 		var tp = transport || sc.socket.transport,
 			dt = datetime || new Date(),
 			msg = dt.toLocaleTimeString() +	' [ ' + tp.name + ' ] ' + tp.sessid;
+        return msg;
+    }
 
-			$('<div class="list-group">').prependTo('#status')
-				.append('<h5 class="list-group-item-heading">' + eventName + '</h5>')
-				.append('<p class="list-group-item-text">' + msg + '</p>');
+    function showStatus(eventName, msg) {
+        $('<div class="list-group">').prependTo('#status')
+            .append('<h5 class="list-group-item-heading">' + eventName + '</h5>')
+            .append('<p class="list-group-item-text">' + msg + '</p>');
     }
 
     sc.on("connecting", function () {
-        showStatus('Connecting.');
+        var eventName = 'Connecting.';
+        showStatus(eventName, getStatusMessage());
+        alertify.log(eventName);
     });
     sc.on("connect", function () {
-        showStatus('Connect.');
+        var eventName = 'Connect.';
+        showStatus(eventName, getStatusMessage());
+        alertify.success(eventName);
     });
     sc.on("connect_failed", function () {
-        showStatus('Connect failed.');
+        var eventName = 'Connect failed.';
+        showStatus(eventName, getStatusMessage());
+        alertify.error(eventName);
     });
     sc.on("disconnect", function () {
-        showStatus('Disconnect.');
+        var eventName = 'Disconnect.';
+        showStatus(eventName, getStatusMessage());
+        alertify.error(eventName);
     });
     sc.on("reconnecting", function () {
-        showStatus('Reconnecting.');
+        var eventName = 'Reconnecting.';
+        showStatus(eventName, getStatusMessage());
+        alertify.error(eventName);
     });
     sc.on("reconnect", function () {
-        showStatus('Reconnected.');
+        var eventName = 'Reconnected.';
+        showStatus(eventName, getStatusMessage());
+        alertify.success(eventName);
+    });
+    sc.on("S_Connect", function (data) {
+        var eventName = data.value;
+        showStatus(eventName, getStatusMessage());
+        alertify.success(eventName);
     });
 
     // received message
@@ -49,6 +69,4 @@ $(function () {
     $('#btnSendMsg').on("click", function () {
         sendMessage();
     });
-    
-    alertify.success("Welcome! chat.");
 });

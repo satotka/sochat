@@ -2,11 +2,12 @@ doctype html
 html
 	head
 		title= title
+
 		link(rel="stylesheet", href="lib/bootstrap/3.0.3/css/bootstrap.min.css")
 		link(rel="stylesheet", href="lib/bootstrap/3.0.3/css/bootstrap-theme.min.css")
-		link(rel="stylesheet", href="/stylesheets/style.css")
 		link(rel="stylesheet", href="lib/alertify/0.3.11/alertify.core.css")
 		link(rel="stylesheet", href="lib/alertify/0.3.11/alertify.bootstrap.css")
+		link(rel="stylesheet", href="css/add.css")
 		<!--[if lt IE 9]>
 		script(src="lib/html5shiv/html5shiv.js")
 		script(src="lib/respond/respond.src.js")
@@ -33,7 +34,7 @@ html
 			.navbar-collapse
 				ul.nav.navbar-nav
 					li: a(href="Chat") Simple Chat
-					li: a(href="RealChat") Realtime Chat
 		.container
-
 			block content
+			hr
+			block footer
