@@ -5,6 +5,8 @@ block head
 	script(src="/js/chat.js")
 
 block content
+	p#busy connectiong 
+		i.fa.fa-refresh.fa-spin
 	form(action="", role="form", method="post", onsubmit="return false;")
 		label.sr-only Your message
 		.input-group

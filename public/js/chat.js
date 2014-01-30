@@ -17,9 +17,11 @@ $(function () {
     }
     sc.on("connecting", function () {
         logStatus('Connecting.');
+        $('#busy').show();
     });
     sc.on("connect", function () {
         logStatus('Connect.', 'success');
+        $('#busy').hide();
     });
     sc.on("connect_failed", function () {
         alertify.log(logStatus('Connect failed.', 'danger'));
@@ -29,9 +31,11 @@ $(function () {
     });
     sc.on("reconnecting", function () {
         logStatus('Reconnecting.');
+        $('#busy').show();
     });
     sc.on("reconnect", function () {
         logStatus('Reconnected.', 'success');
+        $('#busy').hide();
     });
     sc.on("S_Connect", function (data) {
         alertify.success(logStatus(data.value));
