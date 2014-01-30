@@ -10,7 +10,8 @@ block content
 		.input-group
 			input#message.form-control(type="text", placeholder="Your message")
 			.input-group-btn
-				input#btnSendMsg.btn.btn-default(type="submit", value="Send Message")
+				input#btnSendMsg.btn.btn-default.disabled(type="submit", value="Send Message")
+	br
 	#msg_list
 	hr
 	a.toggle(data-toggle='collapse', data-target='#mdlConnectionLog')

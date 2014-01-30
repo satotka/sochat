@@ -23,26 +23,31 @@ $(function () {
         var eventName = 'Connect.';
         showStatus(eventName, getStatusMessage());
         alertify.success(eventName);
+        $('#btnSendMsg').removeClass('disabled');
     });
     sc.on("connect_failed", function () {
         var eventName = 'Connect failed.';
         showStatus(eventName, getStatusMessage());
         alertify.error(eventName);
+        $('#btnSendMsg').addClass('disabled');
     });
     sc.on("disconnect", function () {
         var eventName = 'Disconnect.';
         showStatus(eventName, getStatusMessage());
         alertify.error(eventName);
+        $('#btnSendMsg').addClass('disabled');
     });
     sc.on("reconnecting", function () {
         var eventName = 'Reconnecting.';
         showStatus(eventName, getStatusMessage());
         alertify.error(eventName);
+        $('#btnSendMsg').addClass('disabled');
     });
     sc.on("reconnect", function () {
         var eventName = 'Reconnected.';
         showStatus(eventName, getStatusMessage());
         alertify.success(eventName);
+        $('#btnSendMsg').removeClass('disabled');
     });
     sc.on("S_Connect", function (data) {
         var eventName = data.value;
