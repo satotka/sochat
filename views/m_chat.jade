@@ -28,8 +28,26 @@ html(lang="en")
 			div(data-theme='a', data-role='header')
 				h3 Home
 			div(data-role='content')
-				h3 welcome to chat
-				a(href="/", rel="external") PC chat is here.
+				form(action="", role="form", method="post", onsubmit="return false;")
+					label.sr-only Your message
+					input#message.form-control(type="text", placeholder="Your message")
+					a#btnSendMsg(data-role="button") Send Message
+
+				#msg_list
+			div(data-theme='a', data-role='footer', data-position='fixed')
+				div(data-role='navbar', data-iconpos='top')
+					ul
+						li
+							a(href='#home', data-transition='fade', data-theme='', data-icon='home') Home
+						li
+							a(href='#log', data-transition='fade', data-theme='', data-icon='grid') Log
+						li
+							a(href='/', data-transition='fade', data-theme='', data-icon='alert', rel="external") PC
+		#log(data-role='page')
+			div(data-theme='a', data-role='header')
+				a(data-icon='back', data-rel='back') Back
+				h3 Connection Log
+			div(data-role='content')
 				table#mdlConnectionLog.table.collapse
 					tbody#status
 			div(data-theme='a', data-role='footer', data-position='fixed')
@@ -38,42 +56,6 @@ html(lang="en")
 						li
 							a(href='#home', data-transition='fade', data-theme='', data-icon='home') Home
 						li
-							a(href='#chat', data-transition='fade', data-theme='', data-icon='grid') Chat
-		#chat(data-role='page')
-			div(data-theme='a', data-role='header')
-				a(data-icon='back', data-rel='back') Back
-				h3 Chat
-			div(data-role='content')
-				form(action="", role="form", method="post", onsubmit="return false;")
-					label.sr-only Your message
-					input#message.form-control(type="text", placeholder="Your message")
-					a#btnSendMsg(data-role="button") Send Message
-
-				#msg_list
-
-			div(data-theme='a', data-role='footer', data-position='fixed')
-				div(data-role='navbar', data-iconpos='top')
-					ul
+							a(href='#log', data-transition='fade', data-theme='', data-icon='grid') Log
 						li
-							a(href='#home', data-transition='fade', data-theme='', data-icon='home') Home
-						li
-							a(href='#chat', data-transition='fade', data-theme='', data-icon='grid') Chat
-		#setting(data-role='page')
-			div(data-theme='a', data-role='header')
-				a(data-icon='back', data-rel='back') Back
-				h3 Setting
-			div(data-role='content')
-				p content31
-				p content32
-				p content33
-				p content34
-				p content35
-			div(data-theme='a', data-role='footer', data-position='fixed')
-				div(data-role='navbar', data-iconpos='top')
-					ul
-						li
-							a(href='#home', data-transition='fade', data-theme='', data-icon='home') Home
-						li
-							a(href='#chat', data-transition='fade', data-theme='', data-icon='grid') Chat
-						li
-							a(href='#setting', data-transition='fade', data-theme='', data-icon='gear') Setting
+							a(href='/', data-transition='fade', data-theme='', data-icon='alert', rel="external") PC

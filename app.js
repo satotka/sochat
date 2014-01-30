@@ -29,7 +29,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', function(req, res){
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: 'sochat' });
 });
 app.get('/chat', chat.show);
 app.get('/m_chat', chat.m_show);
