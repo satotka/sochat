@@ -1,0 +1,79 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="initial-scale=1.0, user-scalable=no")
+		meta(name="apple-mobile-web-app-capable" content="yes")
+		meta(name="apple-mobile-web-app-status-bar-style" content="black")
+	
+		title= title
+
+		link(rel="stylesheet", href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css")
+		script(src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js")
+		script(src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js")
+		script(src="/socket.io/socket.io.js")
+		script(src="/js/m_chat.js")
+
+		script(type="text/javascript").
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-47209889-1']);
+			_gaq.push(['_trackPageview']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+	body
+		#home(data-role='page')
+			div(data-theme='a', data-role='header')
+				h3 Home
+			div(data-role='content')
+				h3 welcome to chat
+				a(href="/", rel="external") PC chat is here.
+				table#mdlConnectionLog.table.collapse
+					tbody#status
+			div(data-theme='a', data-role='footer', data-position='fixed')
+				div(data-role='navbar', data-iconpos='top')
+					ul
+						li
+							a(href='#home', data-transition='fade', data-theme='', data-icon='home') Home
+						li
+							a(href='#chat', data-transition='fade', data-theme='', data-icon='grid') Chat
+		#chat(data-role='page')
+			div(data-theme='a', data-role='header')
+				a(data-icon='back', data-rel='back') Back
+				h3 Chat
+			div(data-role='content')
+				form(action="", role="form", method="post", onsubmit="return false;")
+					label.sr-only Your message
+					input#message.form-control(type="text", placeholder="Your message")
+					a#btnSendMsg(data-role="button") Send Message
+
+				#msg_list
+
+			div(data-theme='a', data-role='footer', data-position='fixed')
+				div(data-role='navbar', data-iconpos='top')
+					ul
+						li
+							a(href='#home', data-transition='fade', data-theme='', data-icon='home') Home
+						li
+							a(href='#chat', data-transition='fade', data-theme='', data-icon='grid') Chat
+		#setting(data-role='page')
+			div(data-theme='a', data-role='header')
+				a(data-icon='back', data-rel='back') Back
+				h3 Setting
+			div(data-role='content')
+				p content31
+				p content32
+				p content33
+				p content34
+				p content35
+			div(data-theme='a', data-role='footer', data-position='fixed')
+				div(data-role='navbar', data-iconpos='top')
+					ul
+						li
+							a(href='#home', data-transition='fade', data-theme='', data-icon='home') Home
+						li
+							a(href='#chat', data-transition='fade', data-theme='', data-icon='grid') Chat
+						li
+							a(href='#setting', data-transition='fade', data-theme='', data-icon='gear') Setting
