@@ -5,32 +5,17 @@ block head
 	script(src="/js/chat.js")
 
 block content
-	.row
-		.col-sm-12
-			p Welcome to #{title}
-	.row
-		.col-sm-12
-			form(action="", role="form", method="post", onsubmit="return false;")
-				.form-group
-					label.sr-only Your message
-					input#message.text.form-control(type="text", placeholder="Your message")
-				.form-group
-					input#btnSendMsg.btn.btn-primary(type="submit", value="Send Message")
-			#msg_list
+	form(action="", role="form", method="post", onsubmit="return false;")
+		label.sr-only Your message
+		.input-group
+			input#message.form-control(type="text", placeholder="Your message")
+			.input-group-btn
+				input#btnSendMsg.btn.btn-default(type="submit", value="Send Message")
+	#msg_list
 						
-	//
-		Modal 
-	#mdlConnectionLog.modal.fade(tabindex='-1', role='dialog', aria-labelledby='mdlConnectionLogLabel', aria-hidden='true')
-		.modal-dialog
-			.modal-content
-				.modal-header
-					button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-					h4#mdlConnectionLogLabel.modal-title Connection log
-				.modal-body
-					#status
-				.modal-footer
-					button.btn.btn-default(type='button', data-dismiss='modal') Close
+	a.toggle(data-toggle='collapse', data-target='#mdlConnectionLog')
+		| Connection log
+	#mdlConnectionLog.collapse
+		#status
 
 block footer
-	a(data-toggle='modal', data-target='#mdlConnectionLog')
-		| Connection log
