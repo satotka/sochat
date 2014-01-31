@@ -12,6 +12,10 @@ Features
  - no db
  - no web stroage
 
+Prerequisites
+---------------
+- nodejs with npm
+
 Getting Started
 ---------------
 The easiest way to get started is to clone the repository:
@@ -30,6 +34,20 @@ node app.js
 ```
 
 Open your browser http://localhost:3000
+
+
+Related Modules
+---------------
+- nodejs
+- express
+- socket.io
+- html5shiv
+- respond
+- jquery
+- bootstrap
+- font-awesome
+- alertify
+
 
 License
 -------
