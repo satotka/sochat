@@ -20,7 +20,7 @@ build:
           echo "npm version $(npm -v) running"
 deploy:
     steps:
-        - mrono/elastic-beanstalk-deploy:
+        - satotka/elastic-beanstalk-deploy:
             key: $AMAZON_KEY
             secret: $AMAZON_SECRET_KEY
             app_name: NW
