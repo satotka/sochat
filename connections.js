@@ -4,25 +4,24 @@
 var socketio = require('socket.io');
 
 var list = {
-    sessions:[],
     count: 0,
     addConn: function (socket) {
         var id = socket.id;
-        list[id] = 'connected';
+        list[id] = {status: 'connected', connectOn: new Date()};
         list.count += 1;
         console.log("A socket connected. " + id);
-        console.log("Socket count    : " , list.count);
+        console.log("Socket count    : ", list.count);
     },
     delConn: function (socket) {
         var id = socket.id;
-        list[id] = 'disconnect';
+        list[id] = {status: 'disconnect', disconnectOn: new Date()};
         list.count -= 1;
         console.log("A socket disconnected. " + id);
-        console.log("Socket count    : " , list.count);
+        console.log("Socket count    : ", list.count);
     }
 };
 
-function setup(srv){
+function setup(srv) {
     var io = socketio.listen(srv);
     io.sockets.on("connection", function (socket) {
         //console.log('test print:'+ socket.manager.server.connections);

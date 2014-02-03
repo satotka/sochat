@@ -26,17 +26,17 @@ if ('development' == app.get('env')) {
 }
 
 // routings.
-app.get('/', function(req, res){
+app.get('/', function (req, res) {
     res.render('index', { title: 'sochat' });
 });
-app.get('/chat', function(req, res){
+app.get('/chat', function (req, res) {
     res.render('chat', {title: 'Simple Chat'});
 });
-app.get('/m_chat', function(req, res){
+app.get('/m_chat', function (req, res) {
     res.render('m_chat', {title: 'Simple Chat'});
 });
 
-var srv = http.createServer(app).listen(app.get('port'), function(){
+var srv = http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
