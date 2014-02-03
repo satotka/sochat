@@ -3,11 +3,8 @@
  */
 
 var express = require('express');
-var chat = require('./routes/chat');
 var http = require('http');
 var path = require('path');
-
-var socketio = require('socket.io');
 
 var app = express();
 
@@ -28,33 +25,21 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
+// routings.
 app.get('/', function(req, res){
     res.render('index', { title: 'sochat' });
 });
-app.get('/chat', chat.show);
-app.get('/m_chat', chat.m_show);
+app.get('/chat', function(req, res){
+    res.render('chat', {title: 'Simple Chat'});
+});
+app.get('/m_chat', function(req, res){
+    res.render('m_chat', {title: 'Simple Chat'});
+});
 
 var srv = http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
 });
 
 //manage socket connections.
-var lst = require('./connections').Connections;
-
-var io = socketio.listen(srv);
-io.sockets.on("connection", function (socket) {
-    //console.log('test print:'+ socket.manager.server.connections);
-    lst.addConn(socket); // testing.
-
-    // send connect message to clients.
-    io.sockets.emit("S_Connect", {value: 'someone connect', svTime: new Date()});
-
-    socket.on("C_to_S_message", function (data) {
-        // send message to all clients.
-        io.sockets.emit("S_to_C_message", {value: data.value, svTime: new Date()});
-    });
-
-    socket.on("disconnect", function () {
-        lst.delConn(socket); // testing.
-    });
-});
+var socketconn = require('./connections');
+socketconn.setup(srv);
