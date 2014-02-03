@@ -60,4 +60,9 @@ $(function () {
     $('#btnSendMsg').on("click", function () {
         sendMessage();
     });
+    // stop form submit
+    $( 'form' ).submit( function( e ) {
+        sendMessage();
+        return false; // stop auto submit.
+    } );
 });
