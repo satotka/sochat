@@ -11,14 +11,14 @@ var list = {
         list[id] = 'connected';
         list.count += 1;
         console.log("A socket connected. " + id);
-        console.log("A socket count    . " + list.count);
+        console.log("Socket count    : " , list.count);
     },
     delConn: function (socket) {
         var id = socket.id;
         list[id] = 'disconnect';
         list.count -= 1;
         console.log("A socket disconnected. " + id);
-        console.log("A socket count       . " + list.count);
+        console.log("Socket count    : " , list.count);
     }
 };
 
@@ -40,7 +40,6 @@ function setup(srv){
             list.delConn(socket); // testing.
         });
     });
-};
-
+}
 
 exports.setup = setup;
