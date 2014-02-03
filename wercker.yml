@@ -18,3 +18,10 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
+deploy:
+    steps:
+        - mrono/elastic-beanstalk-deploy:
+            key: $AMAZON_KEY
+            secret: $AMAZON_SECRET_KEY
+            app_name: NW
+            env_name: nw-env4
