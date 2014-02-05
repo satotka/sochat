@@ -3,11 +3,8 @@
  */
 
 var express = require('express');
-var chat = require('./routes/chat');
 var http = require('http');
 var path = require('path');
-
-var socketio = require('socket.io');
 
 var app = express();
 
@@ -28,16 +25,22 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
-app.get('/', function(req, res){
+// routings.
+app.get('/', function (req, res) {
     res.render('index', { title: 'sochat' });
 });
-app.get('/chat', chat.show);
-app.get('/m_chat', chat.m_show);
+app.get('/chat', function (req, res) {
+    res.render('chat', {title: 'Simple Chat'});
+});
+app.get('/m_chat', function (req, res) {
+    res.render('m_chat', {title: 'Simple Chat'});
+});
 
-var srv = http.createServer(app).listen(app.get('port'), function(){
+var srv = http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
+<<<<<<< HEAD
 var io = socketio.listen(srv);
 io.sockets.on("connection", function (socket) {
 	var member = [];
@@ -51,3 +54,8 @@ io.sockets.on("connection", function (socket) {
         console.log("A socket disconnect. " + socket.id);
     });
 });
+=======
+//manage socket connections.
+var socketconn = require('./connections');
+socketconn.setup(srv);
+>>>>>>> 47cd2acc6d5d3f9026646f93e24146d85be863a8
