@@ -40,22 +40,6 @@ var srv = http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
-<<<<<<< HEAD
-var io = socketio.listen(srv);
-io.sockets.on("connection", function (socket) {
-	var member = [];
-    console.log("A socket connected. " + socket.id);
-	mamber.push(socket.id);
-    io.sockets.emit("S_Connect", {value: 'someone connect', svTime: new Date()});
-    socket.on("C_to_S_message", function (data) {
-        io.sockets.emit("S_to_C_message", {value: data.value, svTime: new Date()});
-    });
-    socket.on("disconnect", function () {
-        console.log("A socket disconnect. " + socket.id);
-    });
-});
-=======
 //manage socket connections.
 var socketconn = require('./connections');
 socketconn.setup(srv);
->>>>>>> 47cd2acc6d5d3f9026646f93e24146d85be863a8
