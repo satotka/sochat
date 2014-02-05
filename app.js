@@ -40,7 +40,9 @@ var srv = http.createServer(app).listen(app.get('port'), function(){
 
 var io = socketio.listen(srv);
 io.sockets.on("connection", function (socket) {
+	var member = [];
     console.log("A socket connected. " + socket.id);
+	mamber.push(socket.id);
     io.sockets.emit("S_Connect", {value: 'someone connect', svTime: new Date()});
     socket.on("C_to_S_message", function (data) {
         io.sockets.emit("S_to_C_message", {value: data.value, svTime: new Date()});
